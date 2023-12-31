@@ -126,7 +126,6 @@ export default {
             this.isCustomAmountShowed = false;
         },
         customAmount(e) {
-            console.log(e.target.value);
             let amount = 0;
             if (e.target.value != NaN && e.target.value != "") {
                 amount = e.target.value;

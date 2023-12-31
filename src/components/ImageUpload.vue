@@ -86,7 +86,6 @@ export default {
         uploadFile(e) {
             if (this.isFileSizeValid(e.target.files[0])) {
                 if (e.target.files && e.target.files[0]) {
-                    console.log(e.target.files[0]);
                     // Get uploaded file
                     const file = e.target.files[0];
                     // Get file size
@@ -155,4 +154,3 @@ export default {
     box-sizing: border-box;
 }
 </style>
-../stores/StartPetition

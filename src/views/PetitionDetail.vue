@@ -288,7 +288,6 @@ export default {
                 url: "/petitions/petitionsignreasons",
                 data: data,
             }).then((res) => {
-                console.log(res.data);
                 this.signReasons = res.data;
             });
         },
@@ -315,10 +314,8 @@ export default {
                 userID: useUserStore().ID,
             };
             if (this.signReason.willShown == true && this.signReason.reason == "") {
-                console.log("if");
                 this.signReason.isReasonEmpty = true;
             } else if (this.signReason.willShown == true && this.signReason.reason != "") {
-                console.log("else if");
                 data.signReason = {
                     reason: this.signReason.reason,
                     willShowed: this.signReason.willShown,

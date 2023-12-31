@@ -170,7 +170,6 @@ export default {
             user: this.user,
           },
         }).then((res) => {
-          console.log(res.data.user);
           this.userStore.$patch({
             firstname: res.data.user.firstname,
             lastname: res.data.user.lastname,

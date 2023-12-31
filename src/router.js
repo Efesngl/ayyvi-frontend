@@ -1,50 +1,29 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "./views/Home.vue";
-import BrowsePetitions from "./views/BrowsePetitions.vue";
-import Donate from "./views/Donate.vue";
-import Login from "./views/Login.vue";
-import Register from "./views/Register.vue";
-import StartPetition from "./views/StartPetition.vue";
-import ForgotPassword from "./views/ForgotPassword.vue";
-import UserPage from "./views/UserPage.vue";
-import AccountDetails from "./views/AccountDetails.vue";
-import MyPetitions from "./views/MyPetitions.vue";
-import JoinedPetitions from "./views/JoinedPetitions.vue";
-import PetitionDetail from "./views/PetitionDetail.vue";
-import EditPetition from "./views/EditPetition.vue"
 import { useUserStore } from "./stores/UserStore";
-import BrowseNewestPetitions from "./views/BrowseNewestPetitions.vue"
-import BrowsePopularPetitions from "./views/BrowsePopularPetitions.vue"
-import BrowseSuccededPetitions from "./views/BrowseSuccededPetitions.vue"
-import ResetPassword from "./views/ResetPassword.vue"
-import AdminLayout from "./views/Admin/AdminLayout.vue"
-import AdminDashboard from "./views/Admin/AdminDashboard.vue"
-import DonationStatus from "./views/DonationStatus.vue"
-import MyDonations from "./views/MyDonations.vue"
 const routes = [
     {
         path: "/",
-        component: Home,
+        component: ()=> import("./views/Home.vue"),
         name: "HomePage",
     },
     {
         path: "/gozat",
-        component: BrowsePetitions,
+        component: ()=>import("./views/BrowsePetitions.vue"),
         name: "BrowsePetitions",
         children:[
             {
                 path:"yenikampanyalar",
-                component:BrowseNewestPetitions,
+                component:()=>import("./views/BrowseNewestPetitions.vue"),
                 name:"BrowseNewestPetitions"
             },
             {
                 path:"popularkampanyalar",
-                component:BrowsePopularPetitions,
+                component:()=>import("./views/BrowsePopularPetitions.vue"),
                 name:"BrowsePopularPetitions"
             },
             {
                 path:"basarilikampanyalar",
-                component:BrowseSuccededPetitions,
+                component:()=>import("./views/BrowseSuccededPetitions.vue"),
                 name:"BrowseSuccededPetitions"
             },
 
@@ -52,74 +31,74 @@ const routes = [
     },
     {
         path: "/kampanya/:ID",
-        component: PetitionDetail,
+        component: ()=> import("./views/PetitionDetail.vue"),
         name: "PetitionDetail",
     },
     {
         path: "/bagis",
-        component: Donate,
+        component: ()=>import("./views/Donate.vue"),
         name: "Donate",
     },
     {
         path:"/bagis/:status",
-        component:DonationStatus,
+        component:()=>import("./views/DonationStatus.vue"),
         name:"DonationStatus"
     },
     {
         path: "/giris",
-        component: Login,
+        component: ()=>import("./views/Login.vue"),
         name: "Login",
     },
     {
         path: "/kayit",
-        component: Register,
+        component: ()=>import("./views/Register.vue"),
         name: "Register",
     },
     {
         path: "/sifremiunuttum",
-        component: ForgotPassword,
+        component: ()=>import("./views/ForgotPassword.vue"),
         name: "ForgotPassword",
     },
     {
         path:"/sifresifirla/:token",
-        component:ResetPassword,
+        component:()=>import("./views/ResetPassword.vue"),
         name:"ResetPassword"
     },
     {
         path: "/kampanyabaslat",
-        component: StartPetition,
+        component: ()=>import("./views/StartPetition.vue"),
         name: "StartPetition",
     },
     {
         path: "/hesabim",
-        component: UserPage,
+        component: ()=>import("./views/UserPage.vue"),
         name: "UserPage",
         children: [
             {
                 path: "hesapdetaylari",
-                component: AccountDetails,
+                component: ()=>import("./views/AccountDetails.vue"),
                 name:"AccountDetails"
             },
             {
                 path: "katildigimkampanyalar",
-                component: JoinedPetitions,
+                component: ()=>import("./views/JoinedPetitions.vue"),
                 name:"JoinedPetitions"
             },
             {
                 path: "baslattigimkampanyalar",
-                component: MyPetitions,
+                component: ()=>import("./views/MyPetitions.vue"),
                 name:"MyPetitions"
             },
             {
                 path:"yaptigimbagislar",
-                component:MyDonations,
+                component:()=>import("./views/MyDonations.vue"),
                 name:"MyDonations"
             }
         ],
     },
     {
         path:"/kampanyaduzenle/:ID",
-        component:EditPetition,
+        component:()=>import("./views/EditPetition.vue"),
         name:"EditPetition"
     },
 ];
@@ -134,7 +113,6 @@ const router = createRouter({
 const authNeededRoutes = ["UserPage"];
 const cantEnterIfAuthorized=["Login","Register"]
 router.beforeEach((to, from) => {
-    console.log(to);
     const userStore = useUserStore();
     let isAuthNeeded=false
     if((authNeededRoutes.includes(to.name) || authNeededRoutes.includes(to.matched[0].name)) && !userStore.isLogged){

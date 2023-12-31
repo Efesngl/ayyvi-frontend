@@ -129,7 +129,6 @@ export default {
         return false;
       }
       if (this.ispetitionTypeSelected() && this.petitionInfo.petition.petitionType == 1) {
-        console.log("pt 1 seçili");
         if (!this.ispetitionLocationSelected()) {
           return false;
         }

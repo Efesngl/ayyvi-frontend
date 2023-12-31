@@ -155,15 +155,12 @@ export default {
             this.isHeaderEmpty();
             this.isTopicSelected();
             for (let e in this.errors) {
-                console.log(`${e} : ${this.errors[e]}`);
                 if (e == "isTopicSelected") {
                     if (this.errors[e] == false) {
-                        console.log(e + " hata var");
                         return false;
                     }
                 } else {
                     if (this.errors[e] == true) {
-                        console.log(e + " hata var");
                         return false;
                     }
                 }
@@ -202,9 +199,6 @@ export default {
                         });
                     }
                 });
-                // this.$axios.post("petitions/updatepetition",{"petition":this.petitionInfo}).then(res=>{
-                //     console.log(res.data);
-                // })
             }
         },
         deletePetition() {

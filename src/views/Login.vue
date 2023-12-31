@@ -124,7 +124,6 @@ export default {
         await this.$axios.post("login",{
           user:this.user
         }).then((res) => {
-          console.log(res.data);
           if (res.data.length > 0) {
             this.userStore.$patch({
               firstname: res.data[0].firstname,
