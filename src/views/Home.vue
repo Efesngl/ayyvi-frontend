@@ -19,7 +19,7 @@
                 </div>
             </div>
             <div class="col-7 d-none d-md-block">
-                <img src="/assets/img/start_love.svg" class="w-100 h-100" alt="" />
+                <img src="/assets/img/svg/start_love.svg" class="w-100 h-100" alt="" />
             </div>
         </div>
     </div>

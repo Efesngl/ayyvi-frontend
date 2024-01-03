@@ -65,7 +65,7 @@
             <div class="col-12">
                 <label for="petition-content">Kampanya içeriği</label>
                 <p class="text-danger" v-if="errors.isContentEmpty">Kampanya içeriği girmek zorunludur !</p>
-                <ckeditor :editor="editor" v-model="petitionInfo.petitionContent" tag-name="petite-content" :config="editorConfig"></ckeditor>
+                <ckeditor :editor="editor" v-model="petitionInfo.petitionContent" tag-name="petition-content" :config="editorConfig"></ckeditor>
             </div>
         </div>
 
@@ -77,6 +77,7 @@
                 <button class="btn btn-danger" @click="deletePetition">Kampanyayı sil</button>
             </div>
         </div>
+
     </div>
     <Footer></Footer>
 </template>

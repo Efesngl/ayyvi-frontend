@@ -25,7 +25,7 @@
                 <button class="btn btn-danger h-100" @click="decStep">Önceki adım</button>
             </div>
             <div class="col-6 text-center">
-                <RouterLink to="/login" class="btn btn-danger h-100">Giriş yap</RouterLink>
+                <RouterLink to="/giris" class="btn btn-danger h-100">Giriş yap</RouterLink>
                 <!-- <button class="btn btn-danger" @click="startThePetition">Giriş Yap</button> -->
             </div>
         </div>
