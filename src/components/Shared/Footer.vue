@@ -1,5 +1,5 @@
 <template>
-  <footer id="footer" class="mt-5 d-inline-block w-100">
+  <footer id="footer" class="d-inline-block w-100">
     <div class="container-fluid text-white p-3 pt-5">
       <div class="row text-center">
         <div class="col-4 d-none d-md-block">
@@ -39,7 +39,7 @@ export default {
 </script>
 <style>
 #footer {
-  border-top: 1px solid black;
+  border-top: 1px solid var(--bs-white);
   background-color: var(--dark-red);
 }
 .footer-link{
