@@ -96,7 +96,6 @@ export default {
         };
     },
     beforeMount() {
-        console.log(this.$apiURL);
         this.getSuccededPetitions();
         this.getPopularPetitions();
     },

@@ -12,7 +12,7 @@
               <small>Kampanya ara</small>
               <div class="input-group mb-3">
                 <input
-                  @keyup="getPetitions"
+                  @keyup="getPetitions(1,false)"
                   v-model="filter.search"
                   type="text"
                   name="petition-search"
@@ -27,7 +27,7 @@
           <div class="row">
             <div class="col-12">
               <small>Kampanya türü</small>
-              <select @change="getPetitions" name="petition-type" v-model="filter.type" id="petition-type" class="form-select">
+              <select @change="getPetitions(1,false)" name="petition-type" v-model="filter.type" id="petition-type" class="form-select">
                 <option :value="0" selected>Bütün kampanyalar</option>
                 <option :value="1">Popüler kampanyalar</option>
                 <option :value="2">Yeni kampanyalar</option>
@@ -41,7 +41,7 @@
               <ul class="list-group h-50 topic-list overflow-scroll">
                 <li class="list-group-item" v-for="(t, i) in topics">
                   <input class="form-check-input me-1" type="checkbox" value="" :id="'topic_' + i" />
-                  <label @click="setTopicFilter(t.ID)" class="form-check-label stretched-link" :for="'topic_' + i">{{ t.topic }}</label>
+                  <label @click="setTopicFilter(t.ID,false)" class="form-check-label stretched-link" :for="'topic_' + i">{{ t.topic }}</label>
                 </li>
               </ul>
             </div>
@@ -250,7 +250,7 @@ export default {
         this.filter.topics.push(t);
       }
       if (!offcanvas) {
-        this.getPetitions();
+        this.getPetitions(1,false);
       }
     },
     disableBodyScrolling() {
