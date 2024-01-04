@@ -1,7 +1,7 @@
 <template>
   <Navbar></Navbar>
-  <div class="container-fluid min-vh-100">
-    <div class="row">
+  <div class="container-fluid" style="height: 90dvh">
+    <div class="row h-100">
       <div class="col-3 pt-3 d-none d-lg-block px-3 bg-danger text-white">
         <div class="container">
           <div class="row">
@@ -48,8 +48,8 @@
           </div>
         </div>
       </div>
-      <div class="col-12 col-lg-9">
-        <div class="container-fluid h-auto min-vh-100">
+      <div class="col-12 col-lg-9 h-100">
+        <div class="container-fluid h-100 overflow-scroll">
           <div class="row mt-2 text-center">
             <div class="col" v-if="filter.search.trim() == ''"><h3>Kampanyalar</h3></div>
             <div class="col" v-else>
@@ -115,12 +115,14 @@
                       <ul class="list-group h-50 topic-list overflow-scroll">
                         <li class="list-group-item" v-for="(t, i) in topics">
                           <input class="form-check-input me-1" type="checkbox" value="" :id="'of-topic_' + i" />
-                          <label @click="setTopicFilter(t.ID,true)" class="form-check-label stretched-link" :for="'of-topic_' + i">{{ t.topic }}</label>
+                          <label @click="setTopicFilter(t.ID, true)" class="form-check-label stretched-link" :for="'of-topic_' + i">{{
+                            t.topic
+                          }}</label>
                         </li>
                       </ul>
                       <div class="row">
                         <div class="col-12">
-                          <button class="btn btn-danger border-white text-white w-100 mt-3" @click="getPetitions(true)">Filtrele</button>
+                          <button class="btn btn-danger border-white text-white w-100 mt-3" @click="getPetitions(1,true)">Filtrele</button>
                         </div>
                       </div>
                     </div>
@@ -201,7 +203,7 @@ export default {
       page: 1,
       petitions: [],
       topics: [],
-      offset: 2,
+      offset: 5,
     };
   },
   mounted() {
@@ -212,7 +214,7 @@ export default {
     await this.getPetitions();
   },
   methods: {
-    getPetitions(page=1,offcanvas=false) {
+    getPetitions(page = 1, offcanvas = false) {
       let link = `petitions/browsepetitions?page=${page}&offset=${this.offset}`;
       if (this.filter.search.trim() != "") {
         link = link.concat(`&s=${this.filter.search}`);
@@ -226,11 +228,11 @@ export default {
       this.$axios.get(link).then((res) => {
         this.petitions = res.data.petitions;
         this.totalPetitions = res.data.totalPetitions;
-        if(offcanvas){
-          this.of.hide()
+        if (offcanvas) {
+          this.of.hide();
         }
-        if(this.page>this.paginator){
-          this.page=1
+        if (this.page > this.paginator) {
+          this.page = 1;
         }
       });
     },
@@ -239,7 +241,7 @@ export default {
         this.topics = res.data.topics;
       });
     },
-    setTopicFilter(t,offcanvas=false) {
+    setTopicFilter(t, offcanvas = false) {
       if (this.filter.topics.includes(t)) {
         this.filter.topics = this.filter.topics.filter((topic) => {
           return topic != t;
@@ -247,7 +249,7 @@ export default {
       } else {
         this.filter.topics.push(t);
       }
-      if(!offcanvas){
+      if (!offcanvas) {
         this.getPetitions();
       }
     },

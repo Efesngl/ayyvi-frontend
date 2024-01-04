@@ -12,13 +12,13 @@
         </div>
         <div class="col-6 col-md-4 d-flex flex-column justify-content-evenly">
           <RouterLink to="/" class="fs-3 text-white text-decoration-none footer-link">Ana Sayfa</RouterLink>
-          <RouterLink :to="{name:'BrowseNewestPetitions'}" class="fs-3 text-white text-decoration-none footer-link">Kampanyalara göz at</RouterLink>
+          <RouterLink :to="{name:'BrowsePetitions'}" class="fs-3 text-white text-decoration-none footer-link">Kampanyalara göz at</RouterLink>
           <RouterLink to="/bagis" class="fs-3 text-white text-decoration-none footer-link">Bağış yap</RouterLink>
         </div>
         <div class="col-6 col-md-4 d-flex flex-column justify-content-evenly">
-          <a href="/" class="footer-link text-white"><i class="bi bi-instagram fs-4"></i></a>
-          <a href="/" class="footer-link text-white"><i class="bi bi-threads fs-4"></i></a>
-          <a href="/" class="footer-link text-white"><i class="bi bi-twitter-x fs-4"></i></a>
+          <a :href="s.account" class="footer-link text-white fs-3" v-for="s in store.socials"><span v-html="s.icon"></span></a>
+          <!-- <a href="/" class="footer-link text-white"><i class="bi bi-threads fs-4"></i></a>
+          <a href="/" class="footer-link text-white"><i class="bi bi-twitter-x fs-4"></i></a> -->
         </div>
       </div>
     </div>
@@ -29,10 +29,28 @@
 </template>
 
 <script>
+import {useSocialStore} from "../../stores/SocialMedia"
 export default {
   computed:{
     date(){
       return new Date().getFullYear()
+    }
+  },
+  data(){
+    return {
+      store:useSocialStore()
+    }
+  },
+  beforeMount(){
+    if(!this.store.isSocialsSet) this.getSocials()
+  },
+  methods:{
+    getSocials(){
+      this.$axios.get("getsocials").then(res=>{
+        this.store.$patch({
+          "socials":res.data
+        })
+      })
     }
   }
 };

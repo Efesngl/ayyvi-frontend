@@ -10,24 +10,6 @@ const routes = [
         path: "/gozat",
         component: ()=>import("./views/BrowsePetitions.vue"),
         name: "BrowsePetitions",
-        children:[
-            {
-                path:"yenikampanyalar",
-                component:()=>import("./views/BrowseNewestPetitions.vue"),
-                name:"BrowseNewestPetitions"
-            },
-            {
-                path:"popularkampanyalar",
-                component:()=>import("./views/BrowsePopularPetitions.vue"),
-                name:"BrowsePopularPetitions"
-            },
-            {
-                path:"basarilikampanyalar",
-                component:()=>import("./views/BrowseSuccededPetitions.vue"),
-                name:"BrowseSuccededPetitions"
-            },
-
-        ]
     },
     {
         path: "/kampanya/:ID",

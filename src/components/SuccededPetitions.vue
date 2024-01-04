@@ -9,7 +9,7 @@
                     <div class="card-text">{{ sp.petitionContent }}</div>
                     <div class="row mt-3">
                         <div class="col-3">
-                            <img :src="sp.creatorImage" alt="" style="object-fit: cover" class="w-100 h-100 rounded-circle" />
+                            <img :src="this.apiURL+sp.creatorImage" alt="" style="object-fit: cover" class="w-100 h-100 rounded-circle" />
                         </div>
                         <div class="col-9">
                             <small>{{ sp.creator }}</small>

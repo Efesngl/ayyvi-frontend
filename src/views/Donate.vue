@@ -1,9 +1,9 @@
 <template>
     <Navbar></Navbar>
     <!-- donate -->
-    <div class="container-fluid" id="donate">
-      <FirstStep v-if="formStep==1" @incStepOk="incStep"></FirstStep>
-      <SecondStep v-if="formStep==2"></SecondStep>
+    <div class="container-fluid h-auto" id="donate">
+      <!-- <FirstStep v-if="formStep==1" @incStepOk="incStep"></FirstStep> -->
+      <SecondStep></SecondStep>
     </div>
     <Footer></Footer>
 </template>

@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container h-auto min-vh-100">
         <table class="table table-striped table-hover">
             <thead>
                 <tr>

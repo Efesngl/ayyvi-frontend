@@ -1,5 +1,5 @@
 <template>
-  <div class="container" v-if="petitions.length>0">
+  <div class="container h-auto min-vh-100" v-if="petitions.length>0">
     <JoinedpetitionsCard v-for="p in petitions" :totalSigned="p.total_signed" :targetSign="p.target_sign">
         <template v-slot:browsepetitionCardImage>
           <img :src="this.apiURL+p.petition_image" class="w-100 h-100 rounded-start" style="object-fit: fill" alt="..." />
@@ -24,7 +24,7 @@
         </template>
     </JoinedpetitionsCard>
   </div>
-  <div class="container" v-else>
+  <div class="container h-auto min-vh-100" v-else>
     <div class="row">
       <div class="col-12 text-center">
         <h3 class="text-danger">Başlattığınız herhangi bir kampanya yoktur !</h3>

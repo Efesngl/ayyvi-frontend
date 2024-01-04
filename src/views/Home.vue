@@ -64,7 +64,7 @@
             </div>
             <div class="row mt-2">
                 <div class="col-12 text-center">
-                    <RouterLink :to="{ name: 'BrowsePopularPetitions' }" class="btn btn-danger">Daha fazla kampanyaya göz gezdir</RouterLink>
+                    <RouterLink :to="{ name: 'BrowsePetitions' }" class="btn btn-danger">Daha fazla kampanyaya göz gezdir</RouterLink>
                 </div>
             </div>
         </div>
@@ -92,10 +92,11 @@ export default {
             isSuccededPetitionsLoading: true,
             popularPetitions: [],
             succededPetitions: [],
+            socials:[]
         };
     },
     beforeMount() {
-        
+        console.log(this.$apiURL);
         this.getSuccededPetitions();
         this.getPopularPetitions();
     },
