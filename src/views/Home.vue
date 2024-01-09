@@ -7,7 +7,7 @@
                 <div class="row">
                     <div class="col-12 text-center">
                         <h2 class="fs-1">Değişim için AYYVİ</h2>
-                        <span class="fs-3">Toplam 19726782 kampanya ile dünya çapında değişim </span>
+                        <span class="fs-3">Toplam {{ succededPetitions.length }} kampanya ile dünya çapında değişim </span>
                     </div>
                 </div>
                 <div class="row mt-5">

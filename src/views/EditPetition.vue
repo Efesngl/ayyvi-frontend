@@ -53,7 +53,7 @@
           <label class="form-check-label" for="flexSwitchCheckChecked">Kampanya başarılı</label>
         </div>
       </div>
-      <div :class="{'col-6':petitionInfo.success!=3,'col-12':petitionInfo.success==3}" v-if="petitionInfo.success">
+      <div :class="{'col-6':petitionInfo.success!=3,'col-12':petitionInfo.success==3}" v-if="petitionInfo.status!=1">
         <p v-if="petitionInfo.status == 2" class="text-primary">Kampanya başarı durumu inceleniyor !</p>
         <p v-if="petitionInfo.status == 3" class="text-success">Kampanya başarısı onaylandı !</p>
         <p v-if="petitionInfo.status == 4" class="text-danger">Kampanya başarısı onaylanmadı !</p>
